@@ -21,7 +21,7 @@ function App() {
             <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center font-bold text-white">
               C
             </div>
-            <span className="text-xl font-bold text-gray-900">Campex</span>
+            <span className="text-xl font-bold text-gray-900">Campaxe</span>
           </div>
                      
           <div className="hidden md:flex items-center gap-6">
