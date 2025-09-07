@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from './components/Hero';
 import ProblemSection from './components/ProblemSection';
+import ProblemSolution from './components/Problemsolution';
 import MarketChart from './components/MarketChart';
 import KPIGrid from './components/KPIGrid';
 import ProductFeatures from './components/ProductFeatures';
@@ -29,6 +30,7 @@ function App() {
             <a href="#market" className="text-gray-600 hover:text-purple-600 transition-colors">Market</a>
             <a href="#product" className="text-gray-600 hover:text-purple-600 transition-colors">Product</a>
             <a href="#how-it-works" className="text-gray-600 hover:text-purple-600 transition-colors">How It Works</a>
+            <a href="#future" className="text-gray-600 hover:text-purple-600 transition-colors">Future</a>
             <a href="#team" className="text-gray-600 hover:text-purple-600 transition-colors">Team</a>
             <a href="#funding" className="text-gray-600 hover:text-purple-600 transition-colors">Funding</a>
           </div>
@@ -42,11 +44,13 @@ function App() {
         </div>
         <div id="problem">
           <ProblemSection />
+          
         </div>
         <div id="market">
           <MarketChart />
         </div>
         <KPIGrid />
+        <ProblemSolution />
                  
         <div id="product">
           <ProductFeatures />
