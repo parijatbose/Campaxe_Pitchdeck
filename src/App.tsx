@@ -20,12 +20,16 @@ function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center font-bold text-white">
-              C
+            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg border border-gray-100 overflow-hidden">
+              <img 
+                src="/Images/Campaxe_logo.png" 
+                alt="Campaxe Logo" 
+                className="w-10 h-10 object-cover rounded-full"
+              />
             </div>
-            <span className="text-xl font-bold text-gray-900">Campaxe</span>
+            <span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Campaxe</span>
           </div>
-                     
+                        
           <div className="hidden md:flex items-center gap-6">
             <a href="#home" className="text-gray-600 hover:text-purple-600 transition-colors">Home</a>
             <a href="#problem" className="text-gray-600 hover:text-purple-600 transition-colors">Problem</a>
@@ -44,8 +48,7 @@ function App() {
           <Hero />
         </div>
         <div id="problem">
-          <ProblemSection />
-          
+          <ProblemSection />                  
         </div>
         <div id="market">
           <MarketOverview />
@@ -53,16 +56,14 @@ function App() {
           <TargetAudience />
         </div>
         <KPIGrid />
-        <ProblemSolution />
-                 
+        <ProblemSolution />                         
         <div id="product">
           <ProductFeatures />
         </div>
         <div id="how-it-works">
           <HowItWorks />
         </div>
-        <CompetitiveAdvantage />
-                 
+        <CompetitiveAdvantage />                         
         <div id="team">
           <TeamSection />
         </div>

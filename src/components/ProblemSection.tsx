@@ -84,14 +84,13 @@ const ProblemSection: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <div className="inline-flex items-center px-4 py-2 bg-purple-50 border border-purple-200 text-purple-700 rounded-full text-sm font-medium mb-6">
+          {/* <div className="inline-flex items-center px-4 py-2 bg-indigo-50 border border-indigo-200 text-indigo-700 rounded-full text-sm font-medium mb-6">
             <AlertTriangle className="w-4 h-4 mr-2" />
             Industry Challenge
-          </div>
+          </div> */}
           
           <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-            <span className="text-slate-900">$1.2T Market,</span>
-            <span className="block bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">$400B+ Annual Waste</span>
+            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Industry Challenge</span>
           </h2>
           
           <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
@@ -132,7 +131,7 @@ const ProblemSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Bottom Stat */}
+        {/* Solution Gap */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -140,20 +139,40 @@ const ProblemSection: React.FC = () => {
           viewport={{ once: true }}
           className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm"
         >
-          <div className="text-center">
-            <div className="flex justify-center items-center gap-4 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center">
-                <TrendingDown className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-slate-900">The Solution Gap</h3>
-                <p className="text-slate-600 text-sm">Where Campaxe steps in</p>
-              </div>
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">Solution Gap</h3>
+            <p className="text-slate-600 mb-6">
+              There is a solution gap because existing ad tech stacks are <span className="font-semibold text-purple-600">fragmented, reactive, and human-reliant</span> while 
+              the market's complexity, fraud surface area, and privacy shifts accelerate faster than current tools can handle.
+            </p>
+          </div>
+
+          <div className="space-y-4 mb-6">
+            <div>
+              <span className="font-medium text-slate-900">• Fragmentation across 200+ platforms</span>
+              <span className="text-slate-600"> with inconsistent metrics creates decision latency, misallocation, and blind spots that a unified intelligence layer is meant to close.</span>
             </div>
             
-            <p className="text-slate-600 max-w-xl mx-auto">
-              Traditional media buying lacks the intelligence layer needed for real-time oversight, 
-              creating the perfect opportunity for AI-powered intervention.
+            <div>
+              <span className="font-medium text-slate-900">• Manual and reactive workflows</span>
+              <span className="text-slate-600"> miss sub-daily pacing errors, undetected creative fatigue, and drift in performance, allowing waste to compound before interventions happen.</span>
+            </div>
+            
+            <div>
+              <span className="font-medium text-slate-900">• Legacy fraud filters</span>
+              <span className="text-slate-600"> struggle against fast-evolving MFA sites and invalid traffic; without proactive anomaly scanning, budgets are drained before detection triggers.</span>
+            </div>
+            
+            <div>
+              <span className="font-medium text-slate-900">• A large share of waste</span>
+              <span className="text-slate-600"> stems from routine human errors (missed end dates, wrong targeting, unmonitored changes), yet most stacks lack enforceable guardrails and alerting.</span>
+            </div>
+          </div>
+
+          <div className="bg-purple-50 rounded-xl p-6 border border-purple-100">
+            <p className="text-slate-700">
+              <span className="font-medium text-purple-600">Structural shifts</span>—cookie deprecation, retail/CTV growth, and multi-channel convergence—demand privacy-first, 
+              cross-channel orchestration that legacy point tools were not designed to deliver.
             </p>
           </div>
         </motion.div>

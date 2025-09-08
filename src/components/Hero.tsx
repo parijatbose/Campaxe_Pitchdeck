@@ -61,7 +61,7 @@ const InvestorHero = () => {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/src/Images/Campaxe-Idea-and-Market-Explainer.pdf';
+    link.href = '/Images/Campaxe-Idea-and-Market-Explainer.pdf';
     link.download = 'Campaxe-Idea-and-Market-Explainer.pdf';
     document.body.appendChild(link);
     link.click();

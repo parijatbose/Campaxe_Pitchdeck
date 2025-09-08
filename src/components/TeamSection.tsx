@@ -124,7 +124,7 @@ const SimpleTeamSection: React.FC = () => {
           className="text-center"
         >
           <a 
-            href="https://www.campaxe.com/teams"
+            href="https://www.catchaxe.com/teams"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 bg-white text-slate-700 px-8 py-4 rounded-xl font-semibold text-lg border-2 border-slate-200 hover:border-indigo-300 hover:text-indigo-600 transition-all duration-300 shadow-sm hover:shadow-lg"
