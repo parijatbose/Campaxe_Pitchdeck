@@ -7,14 +7,14 @@ const SimpleTeamSection: React.FC = () => {
     {
       name: "Dev",
       title: "Co-Founder",
-      image: "src/Images/Dev.jpg",
+      image: "/Images/Dev.jpg",
       bio: "Performance marketing veteran with deep expertise in eliminating advertising waste. Focused on building AI-powered solutions that turn inefficiencies into measurable ROI for brands and agencies worldwide.",
       linkedinUrl: "https://www.linkedin.com/in/deevay-rattan-puri-b12a10366/"
     },
     {
       name: "Aninda", 
       title: "Co-Founder",
-      image: "src/Images/aninda.jpg",
+      image: "/Images/aninda.jpg",
       bio: "AI and machine learning specialist dedicated to transforming digital advertising through intelligent automation. Passionate about creating systems that make every advertising dollar accountable and transparent.",
       linkedinUrl: "https://www.linkedin.com/in/aninda-sankar-sukla-67914271/"
     }
