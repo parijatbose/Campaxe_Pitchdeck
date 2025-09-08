@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import ProblemSection from './components/ProblemSection';
 import ProblemSolution from './components/Problemsolution';
 import MarketChart from './components/MarketChart';
+import TargetAudience from './components/TargetAudience';
 import KPIGrid from './components/KPIGrid';
 import ProductFeatures from './components/ProductFeatures';
 import HowItWorks from './components/HowItWorks';
@@ -10,6 +11,7 @@ import CompetitiveAdvantage from './components/CompetitiveAdvantage';
 import TeamSection from './components/TeamSection';
 import FundingSection from './components/FundingSection';
 import Footer from './components/Footer';
+import MarketOverview from './components/MarketOverview';
 
 function App() {
   return (
@@ -30,7 +32,6 @@ function App() {
             <a href="#market" className="text-gray-600 hover:text-purple-600 transition-colors">Market</a>
             <a href="#product" className="text-gray-600 hover:text-purple-600 transition-colors">Product</a>
             <a href="#how-it-works" className="text-gray-600 hover:text-purple-600 transition-colors">How It Works</a>
-            <a href="#future" className="text-gray-600 hover:text-purple-600 transition-colors">Future</a>
             <a href="#team" className="text-gray-600 hover:text-purple-600 transition-colors">Team</a>
             <a href="#funding" className="text-gray-600 hover:text-purple-600 transition-colors">Funding</a>
           </div>
@@ -47,7 +48,9 @@ function App() {
           
         </div>
         <div id="market">
+          <MarketOverview />
           <MarketChart />
+          <TargetAudience />
         </div>
         <KPIGrid />
         <ProblemSolution />

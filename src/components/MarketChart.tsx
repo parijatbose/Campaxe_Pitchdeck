@@ -12,7 +12,7 @@ import {
   Filler,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { TrendingUp, Calendar, Target } from 'lucide-react';
+import { TrendingUp, Star, Target } from 'lucide-react';
 
 ChartJS.register(
   CategoryScale,
@@ -25,34 +25,45 @@ ChartJS.register(
   Filler
 );
 
-const StoryMarketChart: React.FC = () => {
+const CampaxeOpportunityChart: React.FC = () => {
   const chartRef = useRef<ChartJS>(null);
 
-  // Simplified story data points
-  const storyData = [
-    { year: 2015, value: 0.5, phase: "Traditional Era" },
-    { year: 2020, value: 0.8, phase: "Digital Shift" },
-    { year: 2025, value: 1.2, phase: "AI Inflection" },
-    { year: 2030, value: 2.0, phase: "AI Dominance" },
-    { year: 2035, value: 3.0, phase: "Full Automation" }
-  ];
+  // Data points matching the image
+  const years = ['2015', '2020', '2025', '2030', '2035', '2040'];
+  const globalAdSpend = [0.5, 0.7, 1.1, 1.7, 2.4, 3.2];
+  const estimatedWastage = [0.15, 0.25, 0.4, 0.65, 0.95, 1.3];
 
   const data = {
-    labels: storyData.map(d => d.year.toString()),
+    labels: years,
     datasets: [
       {
         label: 'Global Ad Spend ($T)',
-        data: storyData.map(d => d.value),
-        borderColor: '#6366f1',
-        backgroundColor: 'rgba(99, 102, 241, 0.1)',
-        borderWidth: 4,
-        fill: true,
+        data: globalAdSpend,
+        borderColor: '#3b82f6',
+        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+        borderWidth: 3,
+        fill: false,
         tension: 0.4,
-        pointBackgroundColor: '#8b5cf6',
+        pointBackgroundColor: '#3b82f6',
         pointBorderColor: '#fff',
-        pointBorderWidth: 3,
-        pointRadius: 8,
-        pointHoverRadius: 12,
+        pointBorderWidth: 2,
+        pointRadius: 6,
+        pointHoverRadius: 8,
+      },
+      {
+        label: 'Estimated Wastage ($T)',
+        data: estimatedWastage,
+        borderColor: '#ef4444',
+        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+        borderWidth: 3,
+        borderDash: [8, 4],
+        fill: false,
+        tension: 0.4,
+        pointBackgroundColor: '#ef4444',
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2,
+        pointRadius: 6,
+        pointHoverRadius: 8,
       },
     ],
   };
@@ -62,22 +73,38 @@ const StoryMarketChart: React.FC = () => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: false,
+        display: true,
+        position: 'top' as const,
+        labels: {
+          usePointStyle: true,
+          font: {
+            family: 'Inter',
+            size: 12,
+          },
+          color: '#64748b',
+        },
       },
       title: {
-        display: false,
+        display: true,
+        text: 'The CAMPEX Opportunity: Turning Advertising Waste into ROI',
+        font: {
+          family: 'Inter',
+          size: 16,
+          weight: 'bold',
+        },
+        color: '#1e293b',
+        padding: 20,
       },
       tooltip: {
-        backgroundColor: 'rgba(99, 102, 241, 0.95)',
+        backgroundColor: 'rgba(15, 23, 42, 0.95)',
         titleColor: '#fff',
         bodyColor: '#fff',
-        borderColor: '#6366f1',
-        borderWidth: 2,
+        borderColor: '#334155',
+        borderWidth: 1,
         cornerRadius: 8,
         callbacks: {
           label: function(context: any) {
-            const dataPoint = storyData[context.dataIndex];
-            return `${dataPoint.phase}: $${dataPoint.value}T`;
+            return `${context.dataset.label}: $${context.parsed.y}T`;
           }
         }
       },
@@ -87,26 +114,44 @@ const StoryMarketChart: React.FC = () => {
         beginAtZero: true,
         max: 3.5,
         grid: {
-          color: 'rgba(99, 102, 241, 0.1)',
+          color: 'rgba(148, 163, 184, 0.3)',
           lineWidth: 1,
         },
         ticks: {
           color: '#64748b',
           font: {
             family: 'Inter',
-            size: 12,
+            size: 11,
           },
           callback: function(value: any) {
             return '$' + value + 'T';
           }
         },
+        title: {
+          display: true,
+          text: 'Value ($ Trillions)',
+          color: '#64748b',
+          font: {
+            family: 'Inter',
+            size: 12,
+          },
+        },
       },
       x: {
         grid: {
-          color: 'rgba(99, 102, 241, 0.1)',
+          color: 'rgba(148, 163, 184, 0.3)',
           lineWidth: 1,
         },
         ticks: {
+          color: '#64748b',
+          font: {
+            family: 'Inter',
+            size: 11,
+          },
+        },
+        title: {
+          display: true,
+          text: 'Year',
           color: '#64748b',
           font: {
             family: 'Inter',
@@ -115,13 +160,26 @@ const StoryMarketChart: React.FC = () => {
         },
       },
     },
+    annotation: {
+      annotations: {
+        campexPoint: {
+          type: 'point',
+          xValue: '2025',
+          yValue: 1.1,
+          backgroundColor: '#fbbf24',
+          borderColor: '#f59e0b',
+          borderWidth: 3,
+          radius: 8,
+        },
+      },
+    },
   };
 
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <section className="py-24 bg-gradient-to-br from-slate-50 via-white to-indigo-50">
       <div className="container mx-auto px-6">
         
-        {/* Story Introduction */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -130,25 +188,20 @@ const StoryMarketChart: React.FC = () => {
           className="text-center mb-16"
         >
           <div className="inline-flex items-center px-4 py-2 bg-indigo-50 border border-indigo-200 text-indigo-700 rounded-full text-sm font-medium mb-6">
-            <TrendingUp className="w-4 h-4 mr-2" />
-            The Digital Evolution
+            <Target className="w-4 h-4 mr-2" />
+            Market Opportunity
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-            A Story of 
+            Why Campaxe Is
             <span className="block bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              Exponential Growth
+              Uniquely Positioned?
             </span>
           </h2>
-          
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Watch how advertising transformed from a $500B traditional industry 
-            into tomorrow's $3T AI-driven ecosystem.
-          </p>
         </motion.div>
 
         {/* Chart Container */}
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -156,67 +209,53 @@ const StoryMarketChart: React.FC = () => {
             viewport={{ once: true }}
             className="bg-white rounded-2xl p-8 shadow-xl border border-slate-200"
           >
-            <div className="h-80 mb-8">
+            <div className="h-96 mb-8">
               <Line ref={chartRef} data={data} options={options} />
             </div>
 
-            {/* Story Timeline */}
-            <div className="space-y-6">
-              <h3 className="text-lg font-semibold text-slate-700 text-center mb-8">The Journey</h3>
+            {/* CAMPEX Inflection Point Label */}
+            <div className="flex justify-center mb-8">
+              <div className="inline-flex items-center px-4 py-2 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <Star className="w-4 h-4 text-yellow-600 mr-2" />
+                <span className="text-sm font-medium text-yellow-800">
+                  CAMPEX Inflection Point (2025)
+                </span>
+              </div>
+            </div>
+
+            {/* Key Points */}
+            <div className="space-y-4 border-l-4 border-indigo-500 pl-6">
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-slate-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <p className="text-slate-700">
+                  <strong>Wastage rising:</strong> Nearly 40% of global ad spend is wasted, set to cross $1T yearly by 2040 if unchecked.
+                </p>
+              </div>
               
-              <div className="grid md:grid-cols-3 gap-6">
-                {/* Chapter 1: Past */}
-                <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  viewport={{ once: true }}
-                  className="text-center p-4 bg-slate-50 rounded-xl"
-                >
-                  <div className="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <Calendar className="w-6 h-6 text-slate-600" />
-                  </div>
-                  <h4 className="font-semibold text-slate-900 mb-2">2015-2020</h4>
-                  <p className="text-sm text-slate-600">Traditional advertising shifts digital. Manual processes dominate.</p>
-                  <div className="text-lg font-bold text-slate-700 mt-2">$0.5T → $0.8T</div>
-                </motion.div>
-
-                {/* Chapter 2: Present */}
-                <motion.div
-                  initial={{ opacity: 0, y: -30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                  viewport={{ once: true }}
-                  className="text-center p-4 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border-2 border-indigo-200"
-                >
-                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <Target className="w-6 h-6 text-white" />
-                  </div>
-                  <h4 className="font-semibold text-slate-900 mb-2">2025</h4>
-                  <p className="text-sm text-slate-600">AI inflection point. Smart automation begins. <strong>Campaxe era starts.</strong></p>
-                  <div className="text-lg font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mt-2">$1.2T</div>
-                </motion.div>
-
-                {/* Chapter 3: Future */}
-                <motion.div
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.8 }}
-                  viewport={{ once: true }}
-                  className="text-center p-4 bg-purple-50 rounded-xl"
-                >
-                  <div className="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <TrendingUp className="w-6 h-6 text-purple-600" />
-                  </div>
-                  <h4 className="font-semibold text-slate-900 mb-2">2030-2035</h4>
-                  <p className="text-sm text-slate-600">AI-driven advertising ecosystem. Human oversight, AI execution.</p>
-                  <div className="text-lg font-bold text-purple-600 mt-2">$2T → $3T</div>
-                </motion.div>
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-slate-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <p className="text-slate-700">
+                  <strong>2025 inflection point:</strong> A trillion-dollar market, record waste, and accelerating AI adoption create the perfect disruption moment.
+                </p>
+              </div>
+              
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <p className="text-slate-700">
+                  <strong>Campaxe solution:</strong> AI-powered insights turn wasted spend into measurable ROI, making every dollar accountable.
+                </p>
+              </div>
+              
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <p className="text-slate-700">
+                  <strong>Big vision:</strong> Campaxe aims to be the global operating system of media buying, unifying platforms and setting new standards.
+                </p>
               </div>
             </div>
           </motion.div>
 
-          {/* Key Insight */}
+          {/* Bottom Insight */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -227,7 +266,7 @@ const StoryMarketChart: React.FC = () => {
             <div className="inline-flex items-center px-6 py-4 bg-white rounded-xl shadow-lg border border-indigo-200">
               <div className="w-3 h-3 bg-indigo-500 rounded-full mr-3 animate-pulse"></div>
               <span className="text-slate-700 font-medium">
-                <strong className="text-indigo-600">2025 is the pivot year</strong> — where AI transforms advertising from reactive to predictive
+                <strong className="text-indigo-600">Perfect timing:</strong> Campaxe launches at the intersection of trillion-dollar waste and AI maturity
               </span>
             </div>
           </motion.div>
@@ -237,4 +276,4 @@ const StoryMarketChart: React.FC = () => {
   );
 };
 
-export default StoryMarketChart;
+export default CampaxeOpportunityChart;
